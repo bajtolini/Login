@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package login;
 
 import javafx.application.Application;
@@ -22,10 +18,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- *
- * @author xnet
- */
 public class Login extends Application {
 
     @Override
@@ -38,7 +30,8 @@ public class Login extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         Text scenetitle = new Text("Welcome");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        scenetitle.setId("welcome-text");
+
         grid.add(scenetitle, 0, 0, 2, 1);
 
         Label userName = new Label("User Name:");
@@ -65,24 +58,17 @@ public class Login extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.FIREBRICK);
+                actiontarget.setId("actiontarget");
                 actiontarget.setText("Sign in button pressed");
             }
         });
 
         Scene scene = new Scene(grid, 300, 275);
         primaryStage.setScene(scene);
+        scene.getStylesheets().add(Login.class.getResource("Login.css").toExternalForm());
         primaryStage.show();
     }
 
-    /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
